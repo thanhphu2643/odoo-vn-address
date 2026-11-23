@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Addresses in Vietnam pick a ward from the list, which also sets the province and ZIP. -->
+    <record id="base.vn" model="res.country">
+        <field name="enforce_cities" eval="True"/>
+        <field name="address_view_id" ref="view_partner_address_vn"/>
+    </record>
+</odoo>

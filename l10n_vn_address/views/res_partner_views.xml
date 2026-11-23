@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Address block used in contact forms when the company is in Vietnam
+         (res.country.address_view_id): street, ward, province, in that order. -->
+    <record id="view_partner_address_vn" model="ir.ui.view">
+        <field name="name">res.partner.form.address.vn</field>
+        <field name="model">res.partner</field>
+        <field name="priority" eval="900"/>
+        <field name="arch" type="xml">
+            <form>
+                <div class="o_address_format">
+                    <field name="parent_id" invisible="1"/>
+                    <field name="type" invisible="1"/>
+                    <field name="country_enforce_cities" invisible="1"/>
+                    <field name="vn_ward_state_id" invisible="1"/>
+                    <field name="street" placeholder="House number, street..." class="o_address_street"
+                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                    <field name="street2" placeholder="Building, floor..." class="o_address_street"
+                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                    <field name="city_id" placeholder="Ward / Commune" class="o_address_city"
+                           domain="[('country_id', '=', country_id), ('state_id', '=?', vn_ward_state_id)]"
+                           options="{'no_create': True, 'no_open': True}"
+                           attrs="{'invisible': [('country_enforce_cities', '=', False)],
+                                   'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                    <field name="city" placeholder="City" class="o_address_city"
+                           attrs="{'invisible': [('country_enforce_cities', '=', True), '|', ('city_id', '!=', False), ('city', 'in', ('', False))],
+                                   'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                    <field name="state_id" placeholder="Province" class="o_address_state"
+                           domain="[('country_id', '=?', country_id)]"
+                           options="{'no_open': True, 'no_create': True}"
+                           context="{'country_id': country_id, 'default_country_id': country_id}"
+                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                    <field name="zip" placeholder="ZIP" class="o_address_zip"
+                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                    <field name="country_id" placeholder="Country" class="o_address_country"
+                           options="{'no_open': True, 'no_create': True}"
+                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

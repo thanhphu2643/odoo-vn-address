@@ -1,0 +1,277 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_vn_address
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20250909\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-23 16:22+0000\n"
+"PO-Revision-Date: 2026-11-23 16:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_vn_address
+#. odoo-python
+#: code:addons/l10n_vn_address/wizard/vn_address_convert.py:0
+#, python-format
+msgid "%s addresses updated."
+msgstr ""
+
+#. module: l10n_vn_address
+#. odoo-python
+#: code:addons/l10n_vn_address/wizard/vn_address_convert.py:0
+#, python-format
+msgid "Address moved to the 2025 administrative units. It was: %s"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model,name:l10n_vn_address.model_vn_address_convert_line
+msgid "Address to move to the 2025 administrative units"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__apply
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.vn_address_convert_view_form
+msgid "Apply"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.view_partner_address_vn
+msgid "Building, floor..."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.vn_address_convert_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model,name:l10n_vn_address.model_res_city
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.view_partner_address_vn
+msgid "City"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model,name:l10n_vn_address.model_res_partner
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__partner_id
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.view_partner_address_vn
+msgid "Country"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model,name:l10n_vn_address.model_res_country_state
+msgid "Country state"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__create_uid
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__create_date
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__old_address
+msgid "Current address"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__display_name
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields.selection,name:l10n_vn_address.selection__vn_address_convert_line__status__found
+msgid "Found"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_city__vn_code
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_country_state__vn_code
+msgid "GSO Code"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_country_state__vn_old_code
+msgid "GSO Code before 2025"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.view_partner_address_vn
+msgid "House number, street..."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__id
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert____last_update
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__write_uid
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__write_date
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__line_ids
+msgid "Line"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_country_state__vn_replaced
+msgid "Merged in 2025"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model,name:l10n_vn_address.model_vn_address_convert
+msgid "Move Vietnamese addresses to the 2025 administrative units"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__city_id
+msgid "New ward"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields.selection,name:l10n_vn_address.selection__vn_address_convert_line__status__not_found
+msgid "Not found"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields.selection,name:l10n_vn_address.selection__vn_address_convert_line__status__choose
+msgid "Pick one"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__candidate_ids
+msgid "Possible wards"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.view_partner_address_vn
+msgid "Province"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,help:l10n_vn_address.field_res_country_state__vn_old_code
+msgid "Province code before 1 July 2025."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,help:l10n_vn_address.field_res_country_state__vn_code
+msgid "Province code of the General Statistics Office of Vietnam."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert__remaining
+msgid "Remaining"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.vn_address_convert_view_form
+msgid ""
+"Since 1 July 2025 an address in Vietnam is a ward and a province, without district.\n"
+"                    Check the new ward found for each contact, pick one when the old ward was split,\n"
+"                    then apply. The previous address is kept in each contact's chatter."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__status
+msgid "Status"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__street
+msgid "Street"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__street2
+msgid "Street2"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,help:l10n_vn_address.field_vn_address_convert_line__candidate_ids
+msgid ""
+"The old ward was split between these wards: pick the one of this address."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,help:l10n_vn_address.field_res_country_state__vn_replaced
+msgid ""
+"This province was merged into another one on 1 July 2025. It stays so that "
+"existing addresses still show it, but it is no longer offered when picking a"
+" province."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.actions.act_window,name:l10n_vn_address.action_vn_address_convert
+#: model:ir.ui.menu,name:l10n_vn_address.menu_vn_address_convert
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.vn_address_convert_view_form
+msgid "Update Vietnamese addresses"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_city__vn_search_name
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_country_state__vn_search_name
+msgid "Vn Search Name"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_partner__vn_ward_state_id
+#: model:ir.model.fields,field_description:l10n_vn_address.field_res_users__vn_ward_state_id
+msgid "Vn Ward State"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.view_partner_address_vn
+msgid "Ward / Commune"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,help:l10n_vn_address.field_res_city__vn_code
+msgid "Ward code of the General Statistics Office of Vietnam."
+msgstr ""
+
+#. module: l10n_vn_address
+#: model:ir.model.fields,field_description:l10n_vn_address.field_vn_address_convert_line__wizard_id
+msgid "Wizard"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.view_partner_address_vn
+msgid "ZIP"
+msgstr ""
+
+#. module: l10n_vn_address
+#: model_terms:ir.ui.view,arch_db:l10n_vn_address.vn_address_convert_view_form
+msgid "more addresses will be listed the next time you open this tool."
+msgstr ""
