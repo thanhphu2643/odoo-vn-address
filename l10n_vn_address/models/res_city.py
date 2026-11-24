@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-from odoo.osv import expression
+from odoo.fields import Domain
 
 from ..vn_address import fold
 
@@ -20,7 +20,7 @@ class ResCity(models.Model):
         domain = super()._search_display_name(operator, value)
         if value and operator == "ilike":
             # People often type Vietnamese without diacritics: "ba dinh" finds "Phường Ba Đình".
-            domain = expression.OR([domain, [("vn_search_name", "ilike", fold(value))]])
+            domain = Domain.OR([domain, [("vn_search_name", "ilike", fold(value))]])
         return domain
 
     @api.depends("name", "zipcode", "vn_code")

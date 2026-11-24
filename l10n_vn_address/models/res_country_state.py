@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-from odoo.osv import expression
+from odoo.fields import Domain
 
 from ..vn_address import fold
 
@@ -25,7 +25,7 @@ class ResCountryState(models.Model):
     def _search_display_name(self, operator, value):
         domain = super()._search_display_name(operator, value)
         if value and operator == "ilike":
-            domain = expression.OR([domain, [("vn_search_name", "ilike", fold(value))]])
+            domain = Domain.OR([domain, [("vn_search_name", "ilike", fold(value))]])
         if not self.env.context.get("vn_show_merged"):
-            domain = expression.AND([domain, [("vn_replaced", "=", False)]])
+            domain = Domain.AND([domain, [("vn_replaced", "=", False)]])
         return domain

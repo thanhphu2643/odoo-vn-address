@@ -1,6 +1,6 @@
 from odoo import Command, _, api, fields, models
 
-from ..vn_address import clean_line, find_province, match_address
+from ..vn_address import clean_line, find_province, match_address, old_provinces, old_units
 
 # Addresses prepared per run; the rest show up the next time the tool is opened.
 BATCH = 500
@@ -46,30 +46,59 @@ class VnAddressConvert(models.TransientModel):
         return self.env["res.partner"].search(domain)
 
     def _match_context(self):
-        states = self.env["res.country.state"].search([("vn_old_code", "!=", False)])
+        # Odoo 19 keeps only the 34 current provinces: the old ones are known by their code,
+        # and each one belongs to the current province its wards went to.
+        state_by_ward = {city.vn_code: city.state_id for city in self.env["res.city"].search([("vn_code", "!=", False)])}
+        state_by_old_code = {}
+        for code, wards in old_units().items():
+            for ward in wards:
+                state = next((state_by_ward[c] for c in ward.new_codes if c in state_by_ward), None)
+                if state:
+                    state_by_old_code[code] = state
+                    break
+        old_codes_by_state = {}
+        for code, state in state_by_old_code.items():
+            old_codes_by_state.setdefault(state.id, []).append(code)
+        provinces = {code: [name] for code, name in old_provinces().items()}
+        for state in self.env["res.country.state"].search([("vn_old_code", "!=", False)]):
+            provinces.setdefault(state.vn_old_code, []).append(state.name)
+            # The province that kept its name is tried first.
+            codes = old_codes_by_state.setdefault(state.id, [])
+            if state.vn_old_code in codes:
+                codes.insert(0, codes.pop(codes.index(state.vn_old_code)))
         return {
-            "provinces": {state.vn_old_code: [state.name] for state in states},
-            "state_by_old_code": {state.vn_old_code: state for state in states},
+            "provinces": provinces,
+            "state_by_old_code": state_by_old_code,
+            "old_codes_by_state": old_codes_by_state,
             "wards": {},
         }
 
     def _prepare_line(self, partner, context):
-        state = partner.state_id if partner.state_id.vn_old_code else self.env["res.country.state"]
         lines = (partner.street, partner.street2, partner.city)
+        state = partner.state_id if partner.state_id.id in context["old_codes_by_state"] else self.env["res.country.state"]
         if not any(lines) and not state:
             return None  # no address to move
-        if not state:
-            state = context["state_by_old_code"].get(find_province(lines, context["provinces"]), state)
+        if state:
+            old_codes = context["old_codes_by_state"][state.id]
+        else:
+            code = find_province(lines, context["provinces"])
+            state = context["state_by_old_code"].get(code, state)
             if not state and not partner.country_id:
                 return None  # probably not in Vietnam
+            old_codes = [code] if code else []
         new_wards = ()
-        if state and not state.vn_replaced:
+        if state:
             if state.id not in context["wards"]:
                 cities = self.env["res.city"].search([("state_id", "=", state.id), ("vn_code", "!=", False)])
                 context["wards"][state.id] = [(city.vn_code, city.name) for city in cities]
             new_wards = context["wards"][state.id]
 
-        match = match_address(lines, state.vn_old_code, new_wards, context["provinces"])
+        # A contact on a merged province is read with each of the old provinces it took in.
+        match = None
+        for code in old_codes or [None]:
+            match = match_address(lines, code, new_wards, context["provinces"])
+            if match.new_codes:
+                break
         candidates = self.env["res.city"].search([("vn_code", "in", match.new_codes)]) if match.new_codes else []
         found = len(candidates) == 1
         return {

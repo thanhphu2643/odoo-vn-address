@@ -16,6 +16,7 @@ import unicodedata
 from collections import namedtuple
 
 OLD_UNITS = pathlib.Path(__file__).parent / "data" / "vn_units_2024.csv"
+OLD_PROVINCES = pathlib.Path(__file__).parent / "data" / "vn_provinces_2024.csv"
 
 # How each kind of unit is written in practice ("Phường 1", "P.1", "F1", "p1").
 WARD_PREFIXES = {
@@ -75,6 +76,13 @@ def old_units():
                 tuple(row["new_ward_codes"].split()),
             ))
     return by_province
+
+
+@functools.lru_cache(maxsize=None)
+def old_provinces():
+    """{code: name} of the 63 provinces before the reform."""
+    with open(OLD_PROVINCES, newline="", encoding="utf-8") as f:
+        return {row["code"]: row["name"] for row in csv.DictReader(f)}
 
 
 def unit_from_full_name(code, full_name):
