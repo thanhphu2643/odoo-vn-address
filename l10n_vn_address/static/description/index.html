@@ -1,0 +1,65 @@
+<section class="oe_container">
+    <div class="container">
+        <div class="text-center mt-4">
+            <h2 style="color:#0f766e">Vietnam Addresses 2025</h2>
+            <h4 class="text-muted">The 34 provinces and 3,321 wards in effect since 1 July 2025, and a tool to move your existing contacts to them</h4>
+        </div>
+        <p class="mt-4">
+            On 1 July 2025 Vietnam went from three levels of address (province, district, ward) to two:
+            63 provinces became 34, districts were abolished and about 10,000 wards became 3,321.
+            Odoo still ships the 63 old provinces and has no list of wards. This module brings the current
+            units into Odoo and updates the addresses you already have.
+        </p>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="container">
+        <h3 class="mt-4">Features</h3>
+        <ul>
+            <li><b>The 34 current provinces.</b> The merged provinces stay so that old addresses still display,
+                but they are no longer offered when picking a province.</li>
+            <li><b>The 3,321 current wards</b> with their postal code. Picking a ward fills the province and the ZIP.</li>
+            <li><b>Search without diacritics:</b> "ba dinh" finds "Phường Ba Đình", "ho chi minh" finds "Hồ Chí Minh".</li>
+            <li><b>Address form in Vietnamese order</b> (street, ward, province) when your company is in Vietnam.</li>
+            <li><b>A tool to update existing contacts</b> (Contacts &gt; Configuration &gt; Update Vietnamese addresses,
+                or Action on selected contacts). It reads addresses as people write them
+                ("P.Bến Nghé, Q.1, TP.HCM", "Phường 3, TP Đà Lạt", contacts without a country) and shows the result
+                before anything changes: <i>Found</i>, <i>Pick one</i> when the old ward was split, or <i>Not found</i>.
+                The previous address is kept in each contact's chatter.</li>
+            <li><b>English and Vietnamese</b> interface.</li>
+        </ul>
+        <div class="text-center mt-4">
+            <img src="convert_screenshot.png" class="img-fluid" style="border:1px solid #e5e7eb;border-radius:8px" alt="Updating the addresses of existing contacts"/>
+            <p class="text-muted mt-2">Existing contacts with their old address and the ward found for each.</p>
+        </div>
+        <div class="text-center mt-4">
+            <img src="address_form.png" class="img-fluid" style="border:1px solid #e5e7eb;border-radius:8px" alt="Picking a ward in a contact"/>
+            <p class="text-muted mt-2">Picking a ward, typed without diacritics, within the chosen province.</p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="container">
+        <h3 class="mt-4">How accurate the update is</h3>
+        <p>
+            Every one of the 10,034 old wards that has a successor, written as "Phường X, Quận Y" or abbreviated as
+            "P.X, Q.Y", comes back with the right ward. When the kinds are left out ("Phúc Xá, Ba Đình"), 92% come back
+            right and the rest are mostly offered as a choice or not found. That is why nothing changes before you review it.
+        </p>
+        <h3 class="mt-4">Data</h3>
+        <p>
+            The units come from the vietnamese-provinces-database dataset (built from the General Statistics Office of
+            Vietnam, up to resolution 388/NQ-UBTVQH16) and the dvhcvn/20250701 mapping of old wards to new ones,
+            both under the MIT license.
+        </p>
+        <h3 class="mt-4">Requirements</h3>
+        <ul>
+            <li>Depends on Contacts and base_address_extended.</li>
+            <li>Like every third-party module with Python code, it runs on Odoo.sh and on-premise, not on Odoo Online.</li>
+        </ul>
+        <h3 class="mt-4">Support</h3>
+        <p>Questions and requests: <a href="mailto:thanhphu2643@gmail.com">thanhphu2643@gmail.com</a></p>
+    </div>
+</section>

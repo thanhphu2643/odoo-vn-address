@@ -1,5 +1,5 @@
 {
-    "name": "Vietnam - Addresses after the 2025 reform",
+    "name": "Vietnam Addresses 2025",
     "summary": "The 34 provinces and 3,321 wards in effect since 1 July 2025, "
     "and a tool to move existing addresses to them",
     "version": "16.0.1.0.0",
@@ -17,5 +17,6 @@
         "data/res_country_data.xml",
         "wizard/vn_address_convert_views.xml",
     ],
+    "images": ["static/description/banner.png"],
     "installable": True,
 }
