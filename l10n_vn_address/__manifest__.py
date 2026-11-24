@@ -2,7 +2,7 @@
     "name": "Vietnam Addresses 2025",
     "summary": "The 34 provinces and 3,321 wards in effect since 1 July 2025, "
     "and a tool to move existing addresses to them",
-    "version": "16.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Localization",
     "author": "Nguyen Thanh Phu",
     "website": "https://github.com/thanhphu2643/odoo-vn-address",

@@ -22,11 +22,11 @@ class ResCountryState(models.Model):
             state.vn_search_name = fold(state.name) if state.vn_old_code else False
 
     @api.model
-    def _name_search(self, name, args=None, operator="ilike", limit=100, name_get_uid=None):
+    def _name_search(self, name, domain=None, operator="ilike", limit=None, order=None):
         if not self.env.context.get("vn_show_merged"):
-            args = expression.AND([args or [], [("vn_replaced", "=", False)]])
-        ids = list(super()._name_search(name, args, operator, limit, name_get_uid))
+            domain = expression.AND([domain or [], [("vn_replaced", "=", False)]])
+        ids = list(super()._name_search(name, domain, operator, limit, order))
         if name and operator == "ilike" and (not limit or len(ids) < limit):
-            domain = expression.AND([args, [("vn_search_name", "ilike", fold(name)), ("id", "not in", ids)]])
-            ids += self._search(domain, limit=limit and limit - len(ids), access_rights_uid=name_get_uid)
+            domain = expression.AND([domain, [("vn_search_name", "ilike", fold(name)), ("id", "not in", ids)]])
+            ids += self._search(domain, limit=limit and limit - len(ids), order=order)
         return ids
