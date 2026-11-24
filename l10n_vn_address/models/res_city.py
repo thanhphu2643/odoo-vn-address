@@ -16,15 +16,17 @@ class ResCity(models.Model):
             city.vn_search_name = fold(city.name) if city.vn_code else False
 
     @api.model
-    def _name_search(self, name, args=None, operator="ilike", limit=100, name_get_uid=None):
-        ids = list(super()._name_search(name, args, operator, limit, name_get_uid))
-        if name and operator == "ilike" and (not limit or len(ids) < limit):
+    def _search_display_name(self, operator, value):
+        domain = super()._search_display_name(operator, value)
+        if value and operator == "ilike":
             # People often type Vietnamese without diacritics: "ba dinh" finds "Phường Ba Đình".
-            domain = expression.AND([args or [], [("vn_search_name", "ilike", fold(name)), ("id", "not in", ids)]])
-            ids += self._search(domain, limit=limit and limit - len(ids), access_rights_uid=name_get_uid)
-        return ids
+            domain = expression.OR([domain, [("vn_search_name", "ilike", fold(value))]])
+        return domain
 
-    def name_get(self):
+    @api.depends("name", "zipcode", "vn_code")
+    def _compute_display_name(self):
         # Vietnamese wards are picked within their province: the ZIP is shown in its own field.
         vn_wards = self.filtered("vn_code")
-        return [(city.id, city.name) for city in vn_wards] + super(ResCity, self - vn_wards).name_get()
+        for city in vn_wards:
+            city.display_name = city.name
+        super(ResCity, self - vn_wards)._compute_display_name()

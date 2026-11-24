@@ -14,27 +14,25 @@
                     <field name="country_enforce_cities" invisible="1"/>
                     <field name="vn_ward_state_id" invisible="1"/>
                     <field name="street" placeholder="House number, street..." class="o_address_street"
-                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                           readonly="type == 'contact' and parent_id"/>
                     <field name="street2" placeholder="Building, floor..." class="o_address_street"
-                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                           readonly="type == 'contact' and parent_id"/>
                     <field name="city_id" placeholder="Ward / Commune" class="o_address_city"
                            domain="[('country_id', '=', country_id), ('state_id', '=?', vn_ward_state_id)]"
                            options="{'no_create': True, 'no_open': True}"
-                           attrs="{'invisible': [('country_enforce_cities', '=', False)],
-                                   'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                           invisible="not country_enforce_cities" readonly="type == 'contact' and parent_id"/>
                     <field name="city" placeholder="City" class="o_address_city"
-                           attrs="{'invisible': [('country_enforce_cities', '=', True), '|', ('city_id', '!=', False), ('city', 'in', ('', False))],
-                                   'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                           invisible="country_enforce_cities and (city_id or city in ('', False))" readonly="type == 'contact' and parent_id"/>
                     <field name="state_id" placeholder="Province" class="o_address_state"
                            domain="[('country_id', '=?', country_id)]"
                            options="{'no_open': True, 'no_create': True}"
                            context="{'country_id': country_id, 'default_country_id': country_id}"
-                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                           readonly="type == 'contact' and parent_id"/>
                     <field name="zip" placeholder="ZIP" class="o_address_zip"
-                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                           readonly="type == 'contact' and parent_id"/>
                     <field name="country_id" placeholder="Country" class="o_address_country"
                            options="{'no_open': True, 'no_create': True}"
-                           attrs="{'readonly': [('type', '=', 'contact'), ('parent_id', '!=', False)]}"/>
+                           readonly="type == 'contact' and parent_id"/>
                 </div>
             </form>
         </field>

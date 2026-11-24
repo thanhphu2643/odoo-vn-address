@@ -10,11 +10,11 @@
                     Check the new ward found for each contact, pick one when the old ward was split,
                     then apply. The previous address is kept in each contact's chatter.
                 </p>
-                <div class="alert alert-info" role="alert" attrs="{'invisible': [('remaining', '=', 0)]}">
+                <div class="alert alert-info" role="alert" invisible="remaining == 0">
                     <field name="remaining" class="oe_inline"/> more addresses will be listed the next time you open this tool.
                 </div>
                 <field name="line_ids" nolabel="1">
-                    <tree editable="bottom" create="0" delete="0"
+                    <list editable="bottom" create="0" delete="0"
                           decoration-muted="status == 'not_found'" decoration-warning="status == 'choose'">
                         <field name="apply" nolabel="1" widget="boolean_toggle"/>
                         <field name="partner_id" force_save="1"/>
@@ -22,12 +22,12 @@
                         <field name="status" force_save="1" widget="badge"
                                decoration-success="status == 'found'" decoration-warning="status == 'choose'"/>
                         <field name="candidate_ids" force_save="1" widget="many2many_tags"
-                               attrs="{'invisible': [('status', '!=', 'choose')]}"/>
+                               invisible="status != 'choose'"/>
                         <field name="city_id" options="{'no_create': True, 'no_open': True}"
                                domain="[('vn_code', '!=', False)]"/>
                         <field name="street"/>
                         <field name="street2" optional="show"/>
-                    </tree>
+                    </list>
                 </field>
                 <footer>
                     <button name="action_apply" type="object" string="Apply" class="btn-primary" data-hotkey="q"/>
